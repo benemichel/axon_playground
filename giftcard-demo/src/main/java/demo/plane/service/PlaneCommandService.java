@@ -1,13 +1,12 @@
-package io.axoniq.demo.giftcard.service;
+package demo.plane.service;
 
-import io.axoniq.demo.giftcard.command.PlaneCreatedCommand;
-import io.axoniq.demo.giftcard.dto.CreatePlaneRequest;
+import demo.plane.command.CreatePlaneCommand;
+import demo.plane.dto.CreatePlaneRequest;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import org.axonframework.commandhandling.gateway.CommandGateway;
 
 @Service
 public class PlaneCommandService {
@@ -19,7 +18,7 @@ public class PlaneCommandService {
     }
 
     public CompletableFuture<String> createPlane(CreatePlaneRequest createPlaneRequest) {
-        return commandGateway.send(new PlaneCreatedCommand(
+        return commandGateway.send(new CreatePlaneCommand(
                 UUID.randomUUID().toString(),
                 createPlaneRequest.getSpeed())
         );

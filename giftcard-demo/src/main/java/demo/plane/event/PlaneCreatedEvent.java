@@ -1,11 +1,14 @@
-package io.axoniq.demo.giftcard.event;
+package demo.plane.event;
 
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+
+// just POJO
 public class PlaneCreatedEvent {
 
-    private String id;
-    private int speed;
+    // we marked the fields in the commands as final. This is intentional, as it's a
+    // best practice for any message implementation to be immutable
+    private final String id;
+    private final int speed;
 
     public PlaneCreatedEvent(String id, int speed) {
         this.id = id;

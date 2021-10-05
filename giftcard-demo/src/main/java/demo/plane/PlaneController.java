@@ -1,7 +1,7 @@
-package io.axoniq.demo.giftcard;
+package demo.plane;
 
-import io.axoniq.demo.giftcard.dto.CreatePlaneRequest;
-import io.axoniq.demo.giftcard.service.PlaneCommandService;
+import demo.plane.dto.CreatePlaneRequest;
+import demo.plane.service.PlaneCommandService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

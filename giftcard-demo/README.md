@@ -21,7 +21,7 @@ See [the wikipedia article](https://en.wikipedia.org/wiki/Gift_card) for a basic
 * They get _redeemed_: all or part of the monetary value stored on the gift card is used to purchase something.
 
 ### Structure of the App
-The Giftcard application is split into four parts, using four sub-packages of `io.axoniq.demo.giftcard`:
+The Giftcard application is split into four parts, using four sub-packages of `io.axoniq.demo.plane`:
 * The `api` package contains the ([Kotlin](https://kotlinlang.org/)) sourcecode of the messages and entity. They form the API (sic) of the application.
 * The `command` package contains the GiftCard Aggregate class, with all command- and associated eventsourcing handlers.
 * The `query` package provides the query handlers, with their associated event handlers.

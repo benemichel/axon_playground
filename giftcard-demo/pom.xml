@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.axoniq.demo</groupId>
-    <artifactId>giftcard-demo</artifactId>
+    <artifactId>plane-demo</artifactId>
     <version>4.5</version>
     <packaging>jar</packaging>
 
-    <name>giftcard-demo</name>
+    <name>plane-demo</name>
     <description>Axon Framework demo project</description>
 
     <parent>
@@ -22,17 +22,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
         <java.version>11</java.version>
-        <kotlin.version>1.5.10</kotlin.version>
-
         <axon.version>4.5.1</axon.version>
-
         <vaadin.version>8.2.0</vaadin.version>
         <lombok.version>1.18.20</lombok.version>
-
         <jaxb-runtime-version>3.0.0</jaxb-runtime-version>
-
         <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     </properties>
@@ -55,46 +49,25 @@
             <groupId>org.axonframework</groupId>
             <artifactId>axon-spring-boot-starter</artifactId>
             <version>${axon.version}</version>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<groupId>org.axonframework</groupId>-->
+            <!--<artifactId>axon-server-connector</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
         </dependency>
 
         <dependency>
             <groupId>org.axonframework.extensions.mongo</groupId>
             <artifactId>axon-mongo</artifactId>
-            <version>4.2</version>
+            <version>4.4</version>
         </dependency>
 
-        <!-- JPA and H2 for storage -->
-        <!-- JPA and Mongo for storage -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.h2database</groupId>-->
-<!--            <artifactId>h2</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.data</groupId>-->
-<!--            <artifactId>spring-data-mongodb</artifactId>-->
-<!--            <version>3.0.3.RELEASE</version>-->
-<!--        </dependency>-->
 
-        <!-- This will of course be an Axon application. We're adding Kotlin to easily
-             write command and event classes. -->
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-reflect</artifactId>
-        </dependency>
 
         <!-- Vaadin for the GUI -->
         <dependency>
@@ -118,6 +91,7 @@
             <artifactId>reactor-core</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -139,6 +113,29 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.axonframework</groupId>
+            <artifactId>axon-test</artifactId>
+            <version>4.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
