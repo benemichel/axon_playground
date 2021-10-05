@@ -26,8 +26,9 @@ class PlaneTest {
 
 //        CreatePlaneCommand createPlaneCommand = new CreatePlaneCommand(id, speed);
 
-        fixture.given()
+        fixture.givenNoPriorActivity()
                 .when(new CreatePlaneCommand(id, speed))
+                .expectSuccessfulHandlerExecution()
                 .expectEvents(new PlaneCreatedEvent(id, speed));
     }
 

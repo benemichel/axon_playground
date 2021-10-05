@@ -2,6 +2,7 @@ package demo.plane.command;
 
 
 import demo.plane.event.PlaneCreatedEvent;
+import demo.plane.event.PlaneUpdatedEvent;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
@@ -33,12 +34,29 @@ public class Plane {
         apply(new PlaneCreatedEvent(command.getId(), command.getSpeed()));
     }
 
+    // decide (e.g. invariants) and notify rest of application
+    @CommandHandler
+    public Plane(UpdatePlaneCommand command) {
+        log.info("Plane: UpdatePlaneCommand received.");
+        if (command.getSpeed() <= 0) {
+            throw new IllegalArgumentException("speed <= 0");
+        }
+        // publish event
+        apply(new PlaneUpdatedEvent(command.getId(), command.getSpeed()));
+    }
+
     //
     @EventSourcingHandler
-    public void on(PlaneCreatedEvent planeCreatedEvent) {
+    public void on(PlaneCreatedEvent event) {
         log.info("Plane: An PlaneCreatedEvent occurred.");
-        this.id = planeCreatedEvent.getId();
-        this.speed = planeCreatedEvent.getSpeed();
+        this.id = event.getId();
+        this.speed = event.getSpeed();
+    }
+
+    @EventSourcingHandler
+    public void on(PlaneUpdatedEvent event) {
+        log.info("Plane: An PlaneCreatedEvent occurred.");
+        this.speed = event.getSpeed();
     }
 
 
